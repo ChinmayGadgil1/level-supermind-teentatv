@@ -46,6 +46,7 @@ export default function ModelInterface() {
         tweaks: {},
         stream: false
       });
+      console.log("Response from server:");
       console.log(res);
       // Type guard to check if response is an error
       if ('error' in res.data) {
