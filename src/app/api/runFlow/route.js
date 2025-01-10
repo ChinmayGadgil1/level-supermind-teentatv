@@ -2,14 +2,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
+    console.log("entered request");
     const body = await req.json(); // Parse the incoming JSON body
+    console.log("body", body);
     const { flowId, langflowId, inputValue, tweaks, stream } = body;
 
     if (!flowId || !langflowId || !inputValue || tweaks === undefined || stream === undefined) {
       return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
     }
-
-    const applicationToken = "AstraCS:WsCEcaRaAqueEyuqZcPZsYet:3327d55debc5b359468ab7d3ba9ce5d539f012e3c04a853f0763571c29c30efc" // Use environment variable
+    const applicationToken = "AstraCS:WsCEcaRaAqueEyuqZcPZsYet:3327d55debc5b359468ab7d3ba9ce5d539f012e3c04a853f0763571c29c30efc" 
     const baseURL = 'https://api.langflow.astra.datastax.com';
 
     class LangflowClient {
